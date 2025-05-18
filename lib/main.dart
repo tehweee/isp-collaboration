@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'splash_screen.dart'; // Import your splash screen
+import 'onboarding_screen.dart'; // Import your onboarding screen
 
 void main() {
   runApp(const MyApp());
@@ -7,31 +9,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Singplorer App',
+      debugShowCheckedModeBanner: false, // Set to false to remove debug banner
       theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.red, // You can customize your app's primary color
+        fontFamily: 'Montserrat', // Using Montserrat as a close match for the font
       ),
-      home: const MainPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        // You can add more routes here if needed
+      },
     );
-  }
-}
-
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
-
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
